@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+     #texto-oculto {
+      display: none;
+    }
+    </style>
+
+
+
+</head>
+<body>
+
+      <h1>Contagem Regressiva para o Encontro com o meu amor Aléxia</h1>
+  <div id="contador"></div>
+  
+  <video width="640" height="360" controls autoplay loop>
+    <source src="Alexiaedaniel.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+
+  <button onclick="toggleTexto()">Aperte aqui São Mateus</button>
+  
+  <p id="texto-oculto">   Não vejo a hora de poder vê-la novamente, sinto saudades.  <br>  <a href="https://open.spotify.com/intl-pt/track/0cP8fL9xvi8OYisR8OJuzN?si=5a777f7bb3684665">Escuta</a>
+  </p>
+
+  <script>
+
+    function toggleTexto() {
+      var elemento = document.getElementById("texto-oculto");
+      var estilo = window.getComputedStyle(elemento);
+      var display = estilo.getPropertyValue("display");
+      
+      if (display === "none") {
+        elemento.style.display = "block"; // Exibe o texto
+      } else {
+        elemento.style.display = "none"; // Oculta o texto
+      }
+    }
+
+    const dataAlvo = new Date("2023-09-09T00:00:00").getTime();
+
+    function atualizarContador() {
+      const agora = new Date().getTime();
+      const diferenca = dataAlvo - agora;
+
+      if (diferenca <= 0) {
+        document.getElementById("contador").innerHTML = "O encontro com a Alexia está aqui!";
+      } else {
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+        const contadorTexto = `${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+        document.getElementById("contador").innerHTML = contadorTexto;
+      }
+    }
+
+    setInterval(atualizarContador, 1000);
+
+    atualizarContador();
+  </script>
+
+
+
+
+</body>
+</html>
